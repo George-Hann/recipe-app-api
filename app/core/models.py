@@ -15,8 +15,8 @@ class UserManager(BaseUserManager):
         """Create, save and return a new user."""
         if not email:
             raise ValueError('User must have an email address.')
-        user = self.model(email=self.normalize_email(email), **extra_fields) #This is how you call the user class to create a new user
-        user.set_password(password) #This is how you set the encrypted password
+        user = self.model(email=self.normalize_email(email), **extra_fields)  # This is how you call the user class to create a new user
+        user.set_password(password)  # This is how you set the encrypted password
         user.save(using=self._db)
 
         return user
@@ -37,6 +37,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
-    objects = UserManager() #Assignes the user manager to the user
+    objects = UserManager()  # Assignes the user manager to the user
 
     USERNAME_FIELD = 'email'
