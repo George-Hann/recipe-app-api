@@ -62,7 +62,7 @@ class Recipe(models.Model):
         return self.title
 
 
-class tag(models.Model):
+class Tag(models.Model):
     """Tag for filtering recipes."""
     name = models.CharField(max_length=255)
     user = models.ForeignKey(
