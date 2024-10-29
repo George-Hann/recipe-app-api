@@ -157,6 +157,7 @@ class PrivateRecipeApiTest(TestCase):
         payload = {
             'title': 'new recipe title',
             'link': 'https://example.com/new-recipe.pdf',
+            'description': 'New recipe description',
             'time_minutes': 10,
             'price': Decimal('2.59'),
         }
@@ -280,7 +281,7 @@ class PrivateRecipeApiTest(TestCase):
         recipe = create_recipe(user=self.user)
         recipe.tags.add(tag)
 
-        payload = {'tags': [{}]}
+        payload = {'tags': []}
         url = detail_url(recipe.id)
         res = self.client.patch(url, payload, format='json')
 
